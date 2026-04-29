@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "X Capture Bookmark"
+  },
+  "extDescription": {
+    "message": "選択したXポストをローカル保存し、分類・日英表示切替・表示形式別エクスポートを行います。"
+  }
+}

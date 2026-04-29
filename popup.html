@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X Capture Bookmark</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="xcb-popup-body">
+  <main class="xcb-popup" aria-label="X Capture Bookmark">
+    <header class="xcb-popup-header">
+      <div>
+        <h1>X Capture Bookmark</h1>
+        <p data-i18n="appSubtitle">任意のXポストを保存・分類・出力します。</p>
+      </div>
+      <div id="countPill" class="xcb-count-pill">0件</div>
+    </header>
+    <nav class="xcb-main-tabs" aria-label="screen switch">
+      <button id="usageTab" type="button" class="active" data-i18n="usageScreen">利用画面</button>
+      <button id="settingsTab" type="button" data-i18n="settingsScreen">設定画面</button>
+    </nav>
+    <section id="usageScreen">
+      <section class="xcb-toolbar">
+        <div class="xcb-view-tabs" role="tablist">
+          <button id="tileView" type="button" data-i18n="tileView">タイル</button>
+          <button id="listView" type="button" data-i18n="listView">リスト</button>
+        </div>
+        <div class="xcb-export-buttons">
+          <button id="exportCsv" type="button">CSV</button>
+          <button id="exportMarkdown" type="button">MD</button>
+          <button id="exportHtml" type="button">HTML</button>
+        </div>
+      </section>
+      <section class="xcb-filters">
+        <input id="searchInput" class="xcb-search" type="search">
+        <div class="xcb-filter-grid">
+          <label><span data-i18n="sortOrder">並び順</span><select id="sortSelect">
+            <option value="savedAt-desc" data-i18n="savedDesc">取得日時 新しい順</option>
+            <option value="savedAt-asc" data-i18n="savedAsc">取得日時 古い順</option>
+            <option value="postedAt-desc" data-i18n="postedDesc">投稿日時 新しい順</option>
+            <option value="postedAt-asc" data-i18n="postedAsc">投稿日時 古い順</option>
+          </select></label>
+          <label><span data-i18n="groupDisplay">表示</span><select id="groupSelect">
+            <option value="none" data-i18n="normal">通常</option>
+            <option value="author" data-i18n="byAuthor">投稿者別</option>
+            <option value="folder" data-i18n="byFolder">フォルダ別</option>
+          </select></label>
+          <label><span data-i18n="folder">フォルダ</span><select id="folderFilter"><option value="" data-i18n="all">すべて</option></select></label>
+        </div>
+      </section>
+      <section class="xcb-bulk-row"><button id="clearAll" type="button" class="xcb-danger" data-i18n="clearAll">全削除</button></section>
+      <section><div id="postList" class="xcb-post-list"></div></section>
+    </section>
+    <section id="settingsScreen" hidden>
+      <section class="xcb-settings-card">
+        <h2 data-i18n="displaySettings">表示設定</h2>
+        <label class="xcb-toggle-row" for="enabledToggle"><span><strong data-i18n="saveButton">保存ボタン</strong><small data-i18n="saveButtonHelp">各ポストに「📌 保存」を表示</small></span><input id="enabledToggle" type="checkbox" role="switch"></label>
+        <label class="xcb-field-block"><span data-i18n="saveButtonPosition">保存ボタン位置</span><select id="buttonPosition"><option value="bottom-right" data-i18n="bottomRight">右下</option><option value="bottom-left" data-i18n="bottomLeft">左下</option><option value="top-right" data-i18n="topRight">右上</option><option value="top-left" data-i18n="topLeft">左上</option></select></label>
+        <label class="xcb-field-block"><span data-i18n="defaultView">起動時のデフォルト表示</span><select id="defaultViewMode"><option value="tile" data-i18n="tileView">タイル</option><option value="list" data-i18n="listView">リスト</option></select></label>
+        <label class="xcb-field-block"><span data-i18n="language">表示言語</span><select id="languageSelect"><option value="auto" data-i18n="languageAuto">自動（Chromeに従う）</option><option value="ja" data-i18n="languageJa">日本語</option><option value="en" data-i18n="languageEn">English</option></select></label>
+        <label class="xcb-toggle-row" for="screenshotToggle"><span><strong data-i18n="postCardImage">投稿カード画像</strong><small data-i18n="postCardImageHelp">本文・メディア・引用候補からカード画像を生成</small></span><input id="screenshotToggle" type="checkbox" role="switch"></label>
+      </section>
+      <section class="xcb-settings-card">
+        <h2 data-i18n="debug">デバッグ</h2>
+        <label class="xcb-toggle-row" for="debugToggle"><span><strong data-i18n="consoleLog">Consoleログ</strong><small data-i18n="consoleLogHelp">問題調査時のみON推奨</small></span><input id="debugToggle" type="checkbox" role="switch"></label>
+        <button id="copyDebug" type="button" class="xcb-secondary full" data-i18n="copyDebug">診断ログをコピー</button>
+        <details class="xcb-debug"><summary>Debug JSON</summary><pre id="debugOutput">loading...</pre></details>
+      </section>
+    </section>
+    <section class="xcb-status" aria-live="polite"><div id="statusText" data-i18n="loading">読み込み中...</div></section>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
