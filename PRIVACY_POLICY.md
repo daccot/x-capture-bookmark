@@ -1,33 +1,18 @@
-# Privacy Policy
+Privacy Policy for X Capture Bookmark
 
 X Capture Bookmark does not collect, store, or transmit any personal data to external servers.
 
-## Data Storage
+All data (including saved posts, settings, and metadata) is stored locally in the user’s browser using Chrome's storage APIs.
 
-- All saved posts are stored locally using IndexedDB.
-- Settings (such as UI preferences and language) are stored using chrome.storage.
-- No data is sent outside the user's browser.
+We do not:
+- Collect personal information
+- Track user activity outside the extension’s functionality
+- Share or sell any data to third parties
 
-## Permissions Usage
+Permissions Usage:
+- storage: Used to store saved posts and user settings locally
+- downloads: Used only when exporting saved data to files
 
-### storage
-Used to store user-selected posts, folders, memos, and settings locally.
+This extension operates entirely on the client side and does not communicate with any remote servers.
 
-### tabs
-Used only to open saved posts in a new browser tab.
-
-### downloads
-Used to allow users to export saved posts as files.
-
-### host permissions
-Used to interact with X (https://x.com and https://twitter.com) pages in order to display a save button and extract post data selected by the user.
-
-## No Tracking
-
-- No analytics
-- No tracking scripts
-- No remote code execution
-
-## Contact
-
-If you have questions, please contact the repository owner via GitHub.
+If you have any questions, please contact the developer.
